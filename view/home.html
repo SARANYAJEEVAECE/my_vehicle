@@ -1,0 +1,113 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../images/greefi1.png" type="image/png">
+    <title>My vehicle</title>
+    <link href="../css/style.default.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/jquery.tagsinput.css" />
+    <link rel="stylesheet" href="../css/colorpicker.css" />
+    <link rel="stylesheet" href="../css/dropzone.css" />
+    
+</head>
+
+<body>
+    <section id="content_body">
+        <div class="leftpanel">
+            <div class="logopanel" id="user_name">
+                <h1>My vehicle</h1>
+            </div>
+            <!-- logopanel -->
+            <div class="leftpanelinner">
+                <ul class="nav nav-pills nav-stacked nav-bracket">
+                    <li id="view_vehicle"><a><i class="fa fa-home"></i> <span>View Vehicle</span></a></li>
+                    <li id="add_vehicle"><a><i class="fa fa-plus-square"></i> <span>Add Vehicle</span></a></li>
+                    <li id="user_setting"><a><i class="glyphicon glyphicon-wrench"></i> <span>User settings</span></a></li>
+                    <li id="notification"><a><i class="glyphicon glyphicon-bell"></i> <span>Notification<span id="notification_count"></span></span></a></li>
+                    <li id="logout"><a><i class="fa fa-power-off"></i> <span>Logout</span></a></li>
+                </ul>
+            </div>
+            <!-- leftpanelinner  <span id="notification_count">-->
+        </div>
+        <!-- leftpanel -->
+        <div class="mainpanel">
+            <div class="headerbar">
+                <a class="menutoggle"><i class="fa fa-bars"></i></a>
+            </div>
+            <div class="container" style="margin-top:5%;" id="response"></div>
+            <!-- headerbar -->
+            <div class="container" id="main_content" >
+            </div>
+        </div>
+    </section>
+    <script src="../js/jquery-1.11.1.min.js"></script>
+    <script src="../js/home.js"></script>
+    <script src="../js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../js/jquery-ui-1.10.3.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/modernizr.min.js"></script>
+    <script src="../js/jquery.sparkline.min.js"></script>
+    <script src="../js/toggles.min.js"></script>
+    <script src="../js/retina.min.js"></script>
+    <script src="../js/jquery.cookies.js"></script>
+    <script src="../js/jquery.autogrow-textarea.js"></script>
+    <script src="../js/bootstrap-timepicker.min.js"></script>
+    <script src="../js/jquery.maskedinput.min.js"></script>
+    <script src="../js/jquery.tagsinput.min.js"></script>
+    <script src="../js/jquery.mousewheel.js"></script>
+    <script src="../js/select2.min.js"></script>
+    <script src="../js/dropzone.min.js"></script>
+    <script src="../js/colorpicker.js"></script>
+    <script src="../js/custom.js"></script>
+    <script src="../js/bootstrap-datetimepicker.min.js"></script>
+    <script>
+    jQuery(document).ready(function() {
+        "use strict";
+        // Tags Input
+        jQuery('#tags').tagsInput({
+            width: 'auto'
+        });
+        jQuery(".select2").select2({
+            width: '100%'
+        });
+        if (jQuery('#colorpicker').length > 0) {
+            jQuery('#colorSelector').ColorPicker({
+                onShow: function(colpkr) {
+                    jQuery(colpkr).fadeIn(500);
+                    return false;
+                },
+                onHide: function(colpkr) {
+                    jQuery(colpkr).fadeOut(500);
+                    return false;
+                },
+                onChange: function(hsb, hex, rgb) {
+                    jQuery('#colorSelector span').css('backgroundColor', '#' + hex);
+                    jQuery('#colorpicker').val('#' + hex);
+                }
+            });
+        }
+        // Spinner
+        var spinner = jQuery('#spinner').spinner();
+        spinner.spinner('value', 0);
+        // Input Masks
+        jQuery("#date").mask("99/99/9999");
+        jQuery("#phone").mask("(999) 999-9999");
+        jQuery("#ssn").mask("999-99-9999");
+
+        // Time Picker
+        jQuery('#timepicker').timepicker({
+            defaultTIme: false
+        });
+        jQuery('#timepicker2').timepicker({
+            showMeridian: false
+        });
+        jQuery('#timepicker3').timepicker({
+            minuteStep: 15
+        });
+    });
+    </script>
+</body>
+
+</html>
